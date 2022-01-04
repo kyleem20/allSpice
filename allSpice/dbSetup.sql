@@ -6,3 +6,11 @@ CREATE TABLE IF NOT EXISTS accounts(
   email varchar(255) COMMENT 'User Email',
   picture varchar(255) COMMENT 'User Picture'
 ) default charset utf8 COMMENT '';
+CREATE TABLE IF NOT EXISTS recipes(
+  id int NOT NULL primary key AUTO_INCREMENT COMMENT 'primary key',
+  create_time DATETIME COMMENT 'Create Time',
+  update_time DATETIME COMMENT 'Update Time',
+  name TEXT NOT NULL COMMENT 'Recipe Name',
+  creatorId VARCHAR(255) NOT NULL,
+  FOREIGN KEY (creatorId) REFERENCES accounts(id) ON DELETE CASCADE
+) DEFAULT CHARSET UTF8 COMMENT '';
